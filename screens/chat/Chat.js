@@ -6,6 +6,7 @@ import Message from './Message';
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 
 
+
 export default function Chat() {
     const { accessToken } = useContext(AuthContext);
     const [allMessages, setAllMessages] = useState(null);

@@ -1,10 +1,13 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar'; // Re-enable StatusBar
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import StackNavigator from './navigation/StackNavigator';
 import { NavigationContainer } from '@react-navigation/native';
 import AuthProvider from './screens/contexts/AuthProvider';
 // import DrawerNavigator from './navigation/DrawerNavigator';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
@@ -14,7 +17,8 @@ export default function App() {
 
       <View style={styles.container}>
         <AuthProvider>
-          <StackNavigator />
+        <StackNavigator/>
+         
         </AuthProvider>
       </View>
     </NavigationContainer>

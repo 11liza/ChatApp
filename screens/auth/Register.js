@@ -59,7 +59,7 @@ export default function Register() {
             </View>
             <View>
                  
-                <TouchableOpacity style={styles.touchBtn} onPress={()=>handleRegisterUser()}>
+                <TouchableOpacity style={styles.touchBtn} onPress={() =>handleRegisterUser()}> 
                     <Text>Register</Text>
                 </TouchableOpacity>
             </View>
