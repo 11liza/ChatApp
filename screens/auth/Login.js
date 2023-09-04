@@ -27,8 +27,8 @@ export default function Login({navigation}) {
 
                 {loginMessage !='' 
                 &&(loginMessage == 'You have successfully registered. Please login'
-                ? <Text style={{color: 'blue'}}>{loginMessage}</Text>
-                : <Text style={{color: 'green'}}>{loginMessage}</Text>)}
+                ? <Text style={{color: 'red'}}>{loginMessage}</Text>
+                : <Text style={{color: 'red'}}>{loginMessage}</Text>)}
             </View>
             <View style={styles.itemContainer}>
                 <TouchableOpacity 

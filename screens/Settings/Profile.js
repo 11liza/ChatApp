@@ -129,7 +129,6 @@ export default function Profile({navigation}) {
         </TouchableOpacity>
       </View>
 
-
       {/* Profile includes Firstname, Lastname input fields
         Buttons: Update, delete, logout */}
     </View>
@@ -140,7 +139,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    // justifyContent: 'center',
     rowGap: 45,
     marginLeft: '10%',
     marginRight: '10%',
@@ -154,10 +152,10 @@ const styles = StyleSheet.create({
     marginBottom: 0,
   },
   inputField: {
-    padding: 5,
+    padding: 10,
     borderWidth: 2,
     borderRadius: 5,
-    borderColor: 'gray',
+    borderColor: '#a9a9a9',
   },
   touchBtn: {
     paddingTop: 10,
@@ -166,7 +164,7 @@ const styles = StyleSheet.create({
     paddingRight: 5,
     borderWidth: 2,
     borderRadius: 5,
-    borderColor: 'gray',
+    borderColor: '#a9a9a9',
   },
   profileIcon: {
     alignSelf: 'center'

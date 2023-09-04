@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         color: 'black',
     },
     date: {
-        color: '#708090'
+        color: '#696969'
     },
     
 })
