@@ -6,7 +6,6 @@ import Message from './Message';
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 
 
-
 export default function Chat() {
     const { accessToken } = useContext(AuthContext);
     const [allMessages, setAllMessages] = useState(null);
@@ -148,8 +147,8 @@ export default function Chat() {
                 // />
             )} */}
 
-
         </SafeAreaView>
+     
     )
 }
 
@@ -161,7 +160,7 @@ const styles = StyleSheet.create({
         paddingRight: 10,
     },
     content: {
-        backgroundColor: 'red',
+        backgroundColor: 'steelblue',
     },
     newMessageBox: {
         flexDirection: 'row',
@@ -175,7 +174,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         borderColor: 'gray',
         width: '85%',
-        padding: 5,
+        padding: 20,
     },
     messageBox: {
         marginBottom: 20,
@@ -184,11 +183,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         borderWidth: 2,
-        padding: 5,
-        backgroundColor: '#1E90FF',
+        padding: 10,
+        backgroundColor: '#ff0000',
         marginBottom: 15,
         borderRadius: 5,
-        borderColor: '#1E90FF'
+        borderColor: '#ff0000'
 
     }
 

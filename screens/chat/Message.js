@@ -9,8 +9,6 @@ export default function Message({message, userID, setEnableDeleteMessage,setItem
         setEnableDeleteMessage(true);
         setItemId(id);
     }
-
-    
    
   return (
     <View style={styles.container}>
@@ -34,19 +32,20 @@ const styles = StyleSheet.create({
     container: {
         flex:1,
         flexWrap: 'nowrap',
-        backgroundColor: 'white',
+        backgroundColor: '#fff5ee',
         flexDirection: 'column',
         padding: 5,
-    },
+        width: '5',  },
     myContent: {
         alignItems: 'flex-end',
-        backgroundColor: '#1E90FF',
-        padding: 5,
-        borderRadius: 4,
+    backgroundColor: '#40e0d0',
+    padding: 10,
+    borderRadius: 5,
+    alignSelf: 'flex-end', 
     },
     otherMessage: {
         alignItems: 'flex-start',
-        backgroundColor: '#A9A9A9',
+        backgroundColor: '#afeeee',
         padding: 5,
         borderRadius: 4,
 
@@ -55,7 +54,7 @@ const styles = StyleSheet.create({
         color: 'black',
     },
     date: {
-        color: '#696969'
+        color: '#708090'
     },
     
 })
