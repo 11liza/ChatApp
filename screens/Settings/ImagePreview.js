@@ -1,9 +1,9 @@
-/* import React, { useContext } from 'react';
+import React, { useContext } from 'react';
 import * as MediaLibrary from 'expo-media-library';
 import { SafeAreaView, StyleSheet, View, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Entypo, FontAwesome } from '@expo/vector-icons';
-import { AppContext } from '../../contexts/AppProvider';
+import { AuthContext } from '../screens/contexts/AuthProvider';
 import * as FileSystem from 'expo-file-system';
 
 export default function ImagePreview({ setPicture, picture, navigation }) {
@@ -85,4 +85,4 @@ const styles = StyleSheet.create({
     height: 50,
     marginRight: 5,
   },
-}); */
+});

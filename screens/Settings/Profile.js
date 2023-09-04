@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Image, TextInput, View, Text, StyleSheet } from 'react-native'
+import React, { useContext, useEffect, useState } from 'react';
+import { Image, TextInput, View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AuthContext } from '../contexts/AuthProvider';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default function Profile({navigation}) {
-  const URL = 'https://chat-api-with-auth.up.railway.app/users'
+export default function Profile({ navigation }) {
+  const URL = 'https://chat-api-with-auth.up.railway.app/users';
   const { accessToken, handleLogout } = useContext(AuthContext);
   const [avatarImage, setAvatarImage] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -19,11 +19,11 @@ export default function Profile({navigation}) {
         headers: {
           "Authorization": "Bearer " + accessToken.accessToken,
         }
-      })
+      });
       const result = await response.json();
       if (result.status == '200') {
         if (result.data.firstname) {
-          setFirstName(result.data.firstname)
+          setFirstName(result.data.firstname);
         }
         if (result.data.lastname) {
           setLastName(result.data.lastname);
@@ -32,11 +32,11 @@ export default function Profile({navigation}) {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     fetchData();
-  }, [updateUser])
+  }, [updateUser]);
 
   const handleUpdateUser = async () => {
     try {
@@ -50,7 +50,7 @@ export default function Profile({navigation}) {
           "firstname": firstName,
           "lastname": lastName
         })
-      })
+      });
       const result = await response.json();
       if (result.status == '200') {
         setUpdateUser(!updateUser);
@@ -59,43 +59,43 @@ export default function Profile({navigation}) {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  const handleDeleteUser = async() =>{
-    try{
+  const handleDeleteUser = async () => {
+    try {
       const response = await fetch(URL, {
-        method:'DELETE',
+        method: 'DELETE',
         headers: {
           "Authorization": "Bearer " + accessToken.accessToken,
         }
-      })
+      });
 
       const result = await response.json();
-      if(result.status == '200'){
+      if (result.status == '200') {
         handleLogout();
         navigation.navigate("Login");
       }
 
-    }catch(error){
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Profile</Text>
-      <MaterialCommunityIcons 
-        style={styles.profileIcon} 
-        name="face-man-profile" 
-        size={130} 
-        color="black" 
+      <MaterialCommunityIcons
+        style={styles.profileIcon}
+        name="face-man-profile"
+        size={130}
+        color="black"
       />
       <View style={styles.childBox}>
         <TextInput
           style={styles.inputField}
           placeholder='Firstname'
           value={firstName}
-          onChangeText={(text) => setFirstName(text)} 
+          onChangeText={(text) => setFirstName(text)}
         />
         <TextInput
           style={styles.inputField}
@@ -114,34 +114,32 @@ export default function Profile({navigation}) {
 
         <TouchableOpacity
           style={styles.touchBtn}
-          onPress={()=>handleDeleteUser()}
+          onPress={() => handleDeleteUser()}
         >
           <Text>Delete</Text>
         </TouchableOpacity>
-        
+
         <TouchableOpacity
           style={styles.touchBtn}
-          onPress={()=> {
+          onPress={() => {
             handleLogout();
-           navigation.navigate("Login");
+            navigation.navigate("Login");
           }}>
           <Text>Logout</Text>
         </TouchableOpacity>
       </View>
-
-      {/* Profile includes Firstname, Lastname input fields
-        Buttons: Update, delete, logout */}
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    rowGap: 45,
-    marginLeft: '10%',
-    marginRight: '10%',
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    paddingBottom: 10,
+    marginBottom: 10,
   },
   title: {
     fontSize: 35,
@@ -152,25 +150,26 @@ const styles = StyleSheet.create({
     marginBottom: 0,
   },
   inputField: {
+    width: '100%', 
     padding: 10,
+    marginBottom: 20, 
     borderWidth: 2,
     borderRadius: 5,
     borderColor: '#a9a9a9',
   },
   touchBtn: {
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingLeft: 5,
-    paddingRight: 5,
+    padding: 10,
+    paddingLeft: 20, 
+    paddingRight: 20, 
     borderWidth: 2,
     borderRadius: 5,
     borderColor: '#a9a9a9',
+    marginBottom: 20,
   },
   profileIcon: {
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   childBox: {
-    rowGap: 20,
+    alignItems: 'center', 
   }
-
-})
+});

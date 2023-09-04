@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigation } from '@react-navigation/native';
 import { StyleSheet, TextInput, View, Text,TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
-import Login from './Login';
+import Login from '../screens/auth/Login';
 import { AuthContext } from '../contexts/AuthProvider';
 
 export default function Register() {
@@ -53,7 +53,7 @@ export default function Register() {
                 value={password} 
                 onChangeText={(text)=>setPassword(text)} />
                 {registerResult !== null && (registerResult.status == '409'
-                ? <Text style={{color: 'red'}}>{registerResult.message}</Text>
+                ? <Text style={{color: 'green'}}>{registerResult.message}</Text>
                 : null)}
                 
             </View>
@@ -64,7 +64,7 @@ export default function Register() {
                 </TouchableOpacity>
             </View>
             <Link to={{ screen: 'Login' }} style={styles.goBackLink}>
-                <Ionicons name="chevron-back" size={33} color="gray" />
+                <Ionicons name="chevron-back" size={33} color="black" />
                 Back to login
             </Link>
         </View>
