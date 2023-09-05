@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigation } from '@react-navigation/native';
 import { StyleSheet, TextInput, View, Text,TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
-import Login from '../screens/auth/Login';
+import Login from '../auth/Login';
 import { AuthContext } from '../contexts/AuthProvider';
 
 export default function Register() {
