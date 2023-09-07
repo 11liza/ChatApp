@@ -85,7 +85,7 @@ export default function Chat() {
 
   return (
     <ImageBackground
-    source={require('../../assets/background-image.jpg')} // Update the path accordingly
+    source={require('../../assets/Background-image.jpg')}
       style={styles.backgroundImage}
     >
       <SafeAreaView style={styles.container}>
