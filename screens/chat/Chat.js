@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     borderColor: '#ff0000'
   },
   backgroundImage: {
-    flex: 1, // Cover the entire screen
-    resizeMode: 'cover', // Adjust the image's size to cover the screen
+    flex: 1, 
+    resizeMode: 'cover',
   },
 })

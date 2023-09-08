@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff5ee',
         flexDirection: 'column',
         padding: 5,
-        width: '5',  },
+      },
     myContent: {
         alignItems: 'flex-end',
     backgroundColor: '#40e0d0',

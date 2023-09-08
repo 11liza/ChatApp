@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Image, TextInput, View, Text, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { AuthContext } from "../contexts/AuthProvider";
@@ -10,6 +10,8 @@ export default function Profile({ navigation }) {
   const { accessToken, handleLogout, profileImage } = useContext(AuthContext);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const updateInterval = useRef(0); 
 
   const fetchData = async () => {
     try {
@@ -20,40 +22,51 @@ export default function Profile({ navigation }) {
         },
       });
       const result = await response.json();
-      if (result.status === "200") {
-        setFirstName(result.data.firstname || "");
-        setLastName(result.data.lastname || "");
+      if (result.status == '200') {
+        if (result.data.firstname) {
+          setFirstName(result.data.firstname)
+        }
+        if (result.data.lastname) {
+          setLastName(result.data.lastname);
+        }
       }
     } catch (error) {
       console.log(error);
     }
   };
-
   useEffect(() => {
-    fetchData();
+    fetchData(); 
   }, []);
 
+  
   const handleUpdateUser = async () => {
     try {
       const response = await fetch(API_URL, {
-        method: "PATCH",
+        method: 'PATCH',
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken.accessToken}`,
+          "Authorization": "Bearer " + accessToken.accessToken,
         },
         body: JSON.stringify({
-          firstname: firstName,
-          lastname: lastName,
-        }),
-      });
+          "firstname": firstName,
+          "lastname": lastName
+        })
+      })
       const result = await response.json();
-      if (result.status === "200") {
-        fetchData();
+      if (result.status == '200') {
+        setSuccessMessage('Updated successfully!');
+      } else {
+        setSuccessMessage('Update failed!');
       }
+      clearInterval(updateInterval.current);
+      updateInterval.current = setTimeout(() => {
+          setSuccessMessage(null);
+        }, 3000);
+
     } catch (error) {
       console.log(error);
     }
-  };
+  }
 
   const handleDeleteUser = async () => {
     try {
@@ -100,6 +113,12 @@ export default function Profile({ navigation }) {
           onChangeText={(text) => setLastName(text)}
         />
       </View>
+   
+ 
+<View>
+  <Text style={styles.updatedText}>{successMessage}</Text>
+</View>
+
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.updateButton}
@@ -204,5 +223,11 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
     alignSelf: "center",
+  },
+
+  updatedText: {
+    position: 'relative',
+    bottom: '40%',
+    color: 'green',
   },
 });

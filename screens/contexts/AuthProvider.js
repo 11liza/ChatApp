@@ -32,7 +32,6 @@ export default function AuthProvider({ children }) {
         setUserName("");
         setPassword("");
 
-        //save accessToken and userID of user
         const userInfo = {};
         userInfo.accessToken = result.data.accessToken;
         userInfo.userID = result.data._id;

@@ -13,19 +13,15 @@ export default function ImagePreview({ setPicture, picture, navigation }) {
 
   const handleSaveImage = async () => {
     try {
-      // Create an asset from the captured image
       const asset = await MediaLibrary.createAssetAsync(picture.uri);
 
-      // Check if the 'Expo' album exists, if not, create it
       let album = await MediaLibrary.getAlbumAsync("Expo");
       if (album === null) {
         album = await MediaLibrary.createAlbumAsync("Expo", asset);
       }
 
-      // Save the image to the 'Expo' album
       await MediaLibrary.addAssetsToAlbumAsync(asset, album.id, false);
 
-      // Save image to API
       const uploadResult = await FileSystem.uploadAsync(
         `${API_ROOT_URL}users/`,
         picture.uri,
@@ -39,22 +35,18 @@ export default function ImagePreview({ setPicture, picture, navigation }) {
         }
       );
 
-      // Handle successful image upload
       console.log(`API URL: ${API_ROOT_URL}users/${accessToken.userID}`);
       console.log("Upload Result:", uploadResult);
 
-      // Update the profile image locally
       setProfileImage(picture.uri);
 
-      // Navigate back to the 'Profile' screen
       navigation.navigate("Profile");
 
-      // Clear the current picture state
       setPicture(null);
     } catch (error) {
       console.log("Error saving image:", error);
 
-      // Handle errors here, e.g., show an error message to the user
+
     }
   };
 

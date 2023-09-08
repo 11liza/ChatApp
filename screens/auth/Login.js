@@ -1,9 +1,7 @@
 import React, { useContext,useEffect, useState } from 'react'
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useRoute } from '@react-navigation/native';
 import { AuthContext } from '../contexts/AuthProvider';
-import { useFocusEffect } from '@react-navigation/native';
 
 
 export default function Login({navigation}) {

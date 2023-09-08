@@ -9,7 +9,6 @@ export default function DrawerNavigator() {
   return (
     <Drawer.Navigator>
       <Drawer.Screen name="Chat" component={Chat}/>
-      {/* <Drawer.Screen name="Chat" component={Chat} /> */}
       <Drawer.Screen name="Settings" component={SettingsBottomTabNavigator} />
     </Drawer.Navigator>
   )
