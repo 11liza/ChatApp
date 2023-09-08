@@ -53,8 +53,8 @@ export default function Profile({ navigation }) {
         })
       })
       const result = await response.json();
-      if (result.status == 200) {
-        setSuccessMessage('Updated successfully!');
+      if (result.status == 200 && result.data.nModified > 0) {
+        setSuccessMessage('Update successful!');
       } else {
         setSuccessMessage('Update failed!');
       }
@@ -114,10 +114,16 @@ export default function Profile({ navigation }) {
         />
       </View>
    
- 
-<View>
+      <View>
+  <Text style={successMessage === 'Update successful!' ? styles.successText : styles.errorText}>
+  {successMessage}
+</Text>
+
+
+  </View>
+{/* <View>
   <Text style={styles.updatedText}>{successMessage}</Text>
-</View>
+</View> */}
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity
@@ -230,4 +236,14 @@ const styles = StyleSheet.create({
     bottom: '40%',
     color: 'green',
   },
+  successText: {
+    position: 'relative',
+    bottom: '40%',
+    color: 'green',
+  },
+  errorText: {
+    position: 'relative',
+    bottom: '40%',
+    color: 'red'
+  } 
 });
