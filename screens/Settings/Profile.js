@@ -53,7 +53,7 @@ export default function Profile({ navigation }) {
         })
       })
       const result = await response.json();
-      if (result.status == '200') {
+      if (result.status == 200) {
         setSuccessMessage('Updated successfully!');
       } else {
         setSuccessMessage('Update failed!');
@@ -77,7 +77,7 @@ export default function Profile({ navigation }) {
         },
       });
       const result = await response.json();
-      if (result.status === "200") {
+      if (result.status === 200) {
         handleLogout();
         navigation.navigate("Login");
       }
